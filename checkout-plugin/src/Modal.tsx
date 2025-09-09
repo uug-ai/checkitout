@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
-interface ModalProps {
+export interface ModalProps {
   open: boolean
   onClose: () => void
   title?: string
@@ -20,7 +20,7 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
 
   if (!open) return null
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div className="plugin-modal__backdrop" role="presentation" onClick={onClose}>
       <div
         className="plugin-modal__dialog"
@@ -30,13 +30,18 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
         onClick={(e) => e.stopPropagation()}
       >
         <div className="plugin-modal__header">
-          <h2>{title}</h2>
-          <button className="plugin-modal__close" onClick={onClose} aria-label="Close modal">
+          <h3 style={{ margin: 0, fontSize: '1.1rem' }}>{title}</h3>
+          <button
+            className="plugin-modal__close"
+            aria-label="Close"
+            onClick={onClose}
+            style={{ cursor: 'pointer' }}
+          >
             ×
           </button>
         </div>
         <div className="plugin-modal__body">
-          {children ?? <p>Placeholder plugin content goes here.</p>}
+          {children}
         </div>
       </div>
     </div>,

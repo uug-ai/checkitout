@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './Shop.css'
 
 interface Ticket {
@@ -110,9 +111,13 @@ const Shop = () => {
     alert(`Redirecting to payment for ${ticketName} - €${price}`)
   }
 
-  const handleFreeTicket = (ticketName: string) => {
-    alert(`Congratulations! You've entered the giveaway for ${ticketName}!`)
-  }
+  useEffect(() => {
+    if (window.CheckoutPlugin?.initPlugin) {
+      window.CheckoutPlugin.initPlugin('checkout-plugin')
+    } else {
+      console.warn('CheckoutPlugin not found. Was the UMD script built and loaded?')
+    }
+  }, [])
 
   return (
     <div className="shop">
@@ -181,13 +186,11 @@ const Shop = () => {
                   >
                     {ticket.soldOut ? 'SOLD OUT' : `BUY NOW - €${ticket.price}`}
                   </button>
-                  
-                  <button
-                    className="btn btn-free"
-                    onClick={() => handleFreeTicket(ticket.name)}
-                  >
-                    🎁 GET FREE TICKET
+
+                  <button type="button" className="checkout-plugin">
+                    Click me
                   </button>
+
                 </div>
               </div>
             ))}
