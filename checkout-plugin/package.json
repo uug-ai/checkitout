@@ -4,10 +4,11 @@
   "type": "module",
   "main": "dist/checkout-plugin.umd.js",
   "module": "dist/checkout-plugin.es.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && vite build"
+    "type:build": "tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && npm run type:build && vite build"
   },
   "dependencies": {
     "react": "^19",

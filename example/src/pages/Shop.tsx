@@ -1,5 +1,4 @@
-import { useEffect } from 'react'
-import './Shop.css'
+import "./Shop.css"
 
 interface Ticket {
   id: number
@@ -111,14 +110,6 @@ const Shop = () => {
     alert(`Redirecting to payment for ${ticketName} - €${price}`)
   }
 
-  useEffect(() => {
-    if (window.CheckoutPlugin?.initPlugin) {
-      window.CheckoutPlugin.initPlugin('checkout-plugin')
-    } else {
-      console.warn('CheckoutPlugin not found. Was the UMD script built and loaded?')
-    }
-  }, [])
-
   return (
     <div className="shop">
       <div className="shop-hero">
@@ -187,10 +178,9 @@ const Shop = () => {
                     {ticket.soldOut ? 'SOLD OUT' : `BUY NOW - €${ticket.price}`}
                   </button>
 
-                  <button type="button" className="checkout-plugin">
+                  <button type="button" className="btn checkout-plugin">
                     Click me
                   </button>
-
                 </div>
               </div>
             ))}

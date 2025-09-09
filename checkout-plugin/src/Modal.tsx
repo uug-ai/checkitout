@@ -15,6 +15,7 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
       if (e.key === 'Escape') onClose()
     }
     document.addEventListener('keydown', onKey)
+    console.log('modal open prop', open)
     return () => document.removeEventListener('keydown', onKey)
   }, [open, onClose])
 
