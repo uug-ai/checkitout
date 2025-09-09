@@ -1,0 +1,19 @@
+{
+	"name": "javascript-node:20",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	"runArgs": [
+		"--name=muntuit-checkitout",
+		"--network=host"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"GitHub.copilot",
+				"GitHub.vscode-pull-request-github"
+			]
+		}
+	},
+	//"postCreateCommand": "cd kerberos.ng && npm install && npm install -g @angular/cli && npm run build"
+}
