@@ -1,0 +1,103 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 180, 112, 0.1);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.festival-name {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--tomorrowland-gold);
+  letter-spacing: 3px;
+  font-family: 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+}
+
+.festival-year {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 2px;
+  margin-top: -8px;
+  font-weight: 300;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 3rem;
+}
+
+.navbar-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--tomorrowland-gold);
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--tomorrowland-gold);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+  
+  .festival-name {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  
+  .navbar-menu {
+    gap: 2rem;
+  }
+  
+  .navbar-link {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+}
