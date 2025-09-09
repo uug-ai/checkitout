@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  background: #000;
+  width: 100%;
+}
+
+/* Tomorrowland official color scheme */
+:root {
+  --tomorrowland-gold: #D4B470;
+  --tomorrowland-dark: #0a0a0a;
+  --tomorrowland-gray: #1a1a1a;
+  --tomorrowland-light-gray: #333;
+  --tomorrowland-pink: #ff6b9d;
+  --tomorrowland-blue: #4ecdc4;
+  --tomorrowland-purple: #8b5cf6;
+}
+
+/* Custom scrollbar matching Tomorrowland style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tomorrowland-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tomorrowland-gold);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e8c985;
+}

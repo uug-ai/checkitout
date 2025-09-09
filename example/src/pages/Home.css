@@ -1,0 +1,537 @@
+.home {
+  padding-top: 0;
+  background: #000;
+}
+
+/* Container */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container.narrow {
+  max-width: 1400px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+/* Hero Section - Tomorrowland Style */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, rgba(0,0,0,0.7), rgba(212, 180, 112, 0.1)),
+    radial-gradient(ellipse at center, rgba(139, 92, 246, 0.3) 0%, rgba(0,0,0,0.8) 70%),
+    #000;
+  background-size: 100% 100%, 150% 150%, cover;
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-badge {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--tomorrowland-gold);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.hero-main-title {
+  font-size: 5rem;
+  font-weight: 100;
+  letter-spacing: 8px;
+  margin-bottom: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.hero-year {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: var(--tomorrowland-gold);
+  margin-bottom: 2rem;
+}
+
+.hero-details {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-dates,
+.hero-location {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons - Tomorrowland Style */
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+  padding: 1rem 2.5rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--tomorrowland-gold);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #e8c985;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--tomorrowland-gold);
+  border: 1px solid var(--tomorrowland-gold);
+}
+
+.btn-outline:hover {
+  background: var(--tomorrowland-gold);
+  color: #000;
+}
+
+.btn-primary.large {
+  padding: 1.2rem 3rem;
+  font-size: 1rem;
+}
+
+/* Announcement Banner */
+.announcement {
+  background: var(--tomorrowland-gray);
+  border-top: 1px solid rgba(212, 180, 112, 0.2);
+  border-bottom: 1px solid rgba(212, 180, 112, 0.2);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.announcement-content h3 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--tomorrowland-gold);
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.announcement-content p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.announcement-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--tomorrowland-gold);
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+
+.announcement-link:hover {
+  color: var(--tomorrowland-gold);
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 100;
+  letter-spacing: 3px;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5px;
+}
+
+/* Lineup Section */
+.lineup-section {
+  padding: 6rem 0;
+  background: var(--tomorrowland-dark);
+}
+
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .lineup-grid {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .lineup-grid {
+    padding: 0 3rem;
+  }
+}
+
+.artist-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.artist-card.headliner {
+  grid-column: span 1;
+}
+
+.artist-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--tomorrowland-gold), #8b5cf6);
+  transition: all 0.3s ease;
+}
+
+.artist-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.artist-name {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.artist-type {
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--tomorrowland-gold);
+  text-transform: uppercase;
+}
+
+.artist-card:hover .artist-image {
+  transform: scale(1.05);
+}
+
+.lineup-cta {
+  text-align: center;
+}
+
+/* Features Section */
+.features-section {
+  padding: 6rem 0;
+  background: var(--tomorrowland-gray);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .features-grid {
+    padding: 0 3rem;
+  }
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.feature-number {
+  font-size: 3.5rem;
+  font-weight: 100;
+  color: var(--tomorrowland-gold);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.feature-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* News Section */
+.news-section {
+  padding: 6rem 0;
+  background: var(--tomorrowland-dark);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .news-grid {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .news-grid {
+    padding: 0 3rem;
+  }
+}
+
+.news-card {
+  background: var(--tomorrowland-gray);
+  border: 1px solid rgba(212, 180, 112, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.news-card:hover {
+  border-color: rgba(212, 180, 112, 0.3);
+  transform: translateY(-5px);
+}
+
+.news-image {
+  height: 200px;
+  background: linear-gradient(135deg, var(--tomorrowland-gold), var(--tomorrowland-purple));
+}
+
+.news-content {
+  padding: 1.5rem;
+}
+
+.news-content h3 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.news-content p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.news-content time {
+  font-size: 0.8rem;
+  color: var(--tomorrowland-gold);
+  letter-spacing: 0.5px;
+}
+
+/* Final CTA */
+.final-cta {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(212, 180, 112, 0.05));
+  text-align: center;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+/* Animations */
+@keyframes heroGlow {
+  0% { background-size: 100% 100%, 120% 120%, cover; }
+  100% { background-size: 100% 100%, 180% 180%, cover; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-main-title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+  
+  .hero-year {
+    font-size: 1rem;
+  }
+  
+  .hero-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .lineup-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,103 @@
+name: Build React Vite Example
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'example/**'
+      - '.github/workflows/build-react-vite.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+        cache-dependency-path: example/package-lock.json
+
+    - name: Install dependencies
+      run: |
+        cd example
+        npm ci
+
+    - name: Run ESLint
+      run: |
+        cd example
+        npm run lint
+
+    - name: Type check with TypeScript
+      run: |
+        cd example
+        npx tsc --noEmit
+
+    - name: Build React Vite project
+      run: |
+        cd example
+        npm run build
+
+    - name: Check build output
+      run: |
+        cd example
+        ls -la dist/
+        # Verify essential files exist
+        test -f dist/index.html
+        test -d dist/assets
+        echo "✅ Build completed successfully!"
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: react-vite-build
+        path: example/dist/
+        retention-days: 7
+
+  # Optional: Preview deployment test
+  preview-test:
+    runs-on: ubuntu-22.04
+    needs: build
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: example/package-lock.json
+
+    - name: Install dependencies
+      run: |
+        cd example
+        npm ci
+
+    - name: Build project
+      run: |
+        cd example
+        npm run build
+
+    - name: Start preview server and test
+      run: |
+        cd example
+        # Start preview server in background
+        npm run preview &
+        PREVIEW_PID=$!
+        
+        # Wait for server to start
+        sleep 5
+        
+        # Test if server is responding
+        curl -f http://localhost:4173 || exit 1
+        
+        # Kill preview server
+        kill $PREVIEW_PID
+        
+        echo "✅ Preview server test passed!"
