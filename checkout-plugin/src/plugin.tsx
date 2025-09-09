@@ -1,3 +1,15 @@
+// React Fast Refresh safety stubs: ensure host environments without refresh runtime don't error
+// If the bundler strips them they remain harmless. Needed when UMD consumed by a dev Vite app.
+// (Vite may expect these globals if transformation happened upstream.)
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).$RefreshSig$ = (window as any).$RefreshSig$ || (() => (type: unknown) => type);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).$RefreshReg$ = (window as any).$RefreshReg$ || (() => { /* noop */ });
+}
+
 import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Modal } from "./Modal";

@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <!-- Load plugin UMD + CSS via /@fs (Vite serves real FS paths) -->
-    <link rel="stylesheet" href="/vendor/checkout-plugin/checkout-plugin.css" />
-    <script src="/vendor/checkout-plugin/checkout-plugin.umd.cjs"></script>
+  <!-- Load plugin UMD + CSS via /@fs (Vite serves real FS paths). Plugin auto-initializes on DOM ready. -->
+    <link rel="stylesheet" href="/@fs//workspaces/checkitout/checkout-plugin/dist/checkout-plugin.css" />
+    <script src="/@fs//workspaces/checkitout/checkout-plugin/dist/checkout-plugin.umd.cjs"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
   </head>
