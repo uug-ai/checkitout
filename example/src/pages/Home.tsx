@@ -1,8 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <div className="home">
       {/* Hero Section - Tomorrowland Style */}
