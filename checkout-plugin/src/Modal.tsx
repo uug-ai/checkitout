@@ -21,6 +21,8 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
 
   if (!open) return null
 
+  const portalTarget = document.getElementById('__checkout-plugin-root') || document.body
+
   return createPortal(
     <div className="plugin-modal__backdrop" role="presentation" onClick={onClose}>
       <div
@@ -46,6 +48,6 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
         </div>
       </div>
     </div>,
-    document.body
+    portalTarget
   )
 }
