@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dts from 'vite-plugin-dts'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts({ insertTypesEntry: true })],
   build: {
     lib: {
-      entry: 'src/main.tsx',
+      entry: 'src/index.ts',
       name: 'Plugin',
       fileName: (format) => `plugin.${format}.js`
     },
