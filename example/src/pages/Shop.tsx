@@ -1,4 +1,3 @@
-import React from 'react'
 import './Shop.css'
 
 interface Ticket {
@@ -106,7 +105,7 @@ const tickets: Ticket[] = [
   }
 ]
 
-const Shop: React.FC = () => {
+const Shop = () => {
   const handlePurchase = (ticketName: string, price: number) => {
     alert(`Redirecting to payment for ${ticketName} - €${price}`)
   }
