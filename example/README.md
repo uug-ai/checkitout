@@ -1,69 +1,95 @@
-# React + TypeScript + Vite
+# Dreamland Festival - Example Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A demonstration application showcasing React plugin components through a complete festival website experience.
 
-Currently, two official plugins are available:
+## About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This example application demonstrates plugin functionality through **Dreamland**, a fictional electronic music festival website inspired by Tomorrowland. The application showcases modern React development practices and component integration.
 
-## Expanding the ESLint configuration
+### Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🎪 **Festival Home Page**
+- Hero section with festival branding and call-to-action
+- Artist lineup grid with headliner showcase
+- News section with latest announcements
+- Features grid highlighting festival statistics
+- Responsive design with festival-themed styling
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🎫 **Ticket Shop**
+- Multiple ticket tiers (Day Pass, 3-Day Pass, VIP, Student, etc.)
+- Dynamic pricing with original/discounted prices
+- Popular and sold-out badges
+- Interactive purchase flow
+- Free ticket giveaway feature
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+🧭 **Navigation**
+- React Router DOM for seamless page transitions
+- Clean navigation bar
+- Responsive mobile-friendly design
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Quick Start
+
+### Development Mode
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) to view the application in development mode with hot reload.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Builds the app for production in the `dist` folder with optimized bundles.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+Preview the production build locally before deployment.
+
+### Code Quality
+
+```bash
+npm run lint
+```
+
+Run ESLint to check code quality and fix issues.
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable components
+│   └── Navbar.tsx
+├── pages/         # Route components
+│   ├── Home.tsx   # Festival landing page
+│   └── Shop.tsx   # Ticket purchasing
+├── assets/        # Static assets
+├── App.tsx        # Main app component with routing
+└── main.tsx       # Application entry point
+```
+
+## Technologies Used
+
+- **React 19** with TypeScript
+- **React Router DOM** for navigation
+- **Vite** for build tooling and development server
+- **ESLint** for code quality
+- **CSS3** for styling with modern techniques
+
+## Festival Theme
+
+The Dreamland theme features:
+- **Colors**: Rich purples, golds, and gradients
+- **Typography**: Modern, bold headings with clean body text  
+- **Layout**: Grid-based design with card components
+- **Interactive Elements**: Hover effects and smooth transitions
+
+This example serves as both a demonstration of the plugin components and a showcase of modern React application development.
