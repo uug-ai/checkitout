@@ -108,7 +108,7 @@
   gap: .5rem .75rem;
   justify-content: center;     
   align-items: center;
-  width: 100%;
+  width: 80%;
   padding: .25rem 0;
 }
 
@@ -130,12 +130,13 @@
 
 .checkout-modal__skill-btn:hover {
   background: var(--modal-primary-color);
+  border-color: var(--modal-primary-color);
   color: var(--modal-bg);
 }
 
 .checkout-modal__skill-btn--selected {
-  background: var(--modal-primary-color);
-  color: var(--modal-bg);
+  background: transparent;
+  color: var(--modal-primary-color);
   border-color: var(--modal-primary-color);
 }
   .checkout-modal__divider {
