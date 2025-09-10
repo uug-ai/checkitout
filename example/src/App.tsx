@@ -5,8 +5,10 @@ import Navbar from './components/Navbar'
 import './App.css'
 
 function App() {
+  const basename = import.meta.env.PROD ? '/checkitout' : '';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="App">
         <Navbar />
         <Routes>
