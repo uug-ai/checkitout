@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "vite",
     "type:build": "tsc -p tsconfig.build.json",
-    "build": "rm -rf dist && npm run type:build && vite build"
+    "build": "vite build"
   },
   "dependencies": {
     "react": "^19",

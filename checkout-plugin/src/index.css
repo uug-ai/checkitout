@@ -139,6 +139,7 @@
   border-color: var(--modal-primary-color);
 }
   .checkout-modal__divider {
+    align-self: center;
     width: 15%;
     border: none;
     border-top: 1px solid var(--modal-border-color);
