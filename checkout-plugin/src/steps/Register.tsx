@@ -23,7 +23,7 @@ export const RegisterStep: React.FC<StepComponentProps> = ({ controller }) => {
       </h4>
       <div className="checkout-modal__body__content">
         <div className="checkout-modal__body__form">
-          <div class="checkout-modal--form-row">
+          <div className="checkout-modal--form-row">
             <label>
               <input
                 className="checkout-modal--input"
@@ -41,7 +41,7 @@ export const RegisterStep: React.FC<StepComponentProps> = ({ controller }) => {
               />
             </label>
           </div>
-          <div class="checkout-modal--form-row">
+          <div className="checkout-modal--form-row">
             <label>
               <input
                 className="checkout-modal--input"
@@ -80,7 +80,6 @@ export const RegisterStep: React.FC<StepComponentProps> = ({ controller }) => {
         <button
           className={`checkout-modal__button-secondary checkout-modal__actions-right ${disabled ? 'checkout-modal__button-disabled' : ''}`}
           onClick={submit}
-          disabled={disabled}
         >
           Registreer
         </button>
