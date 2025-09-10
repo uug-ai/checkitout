@@ -76,3 +76,26 @@ Both projects include these npm scripts:
 - **Vite** - Fast build tool and dev server
 - **ESLint** - Code linting
 - **React Router DOM** - Client-side routing (example only)
+
+## Deployment
+
+The example application is automatically deployed to GitHub Pages when:
+- A new release is published
+- Changes are pushed to the main branch (in the `example/` directory)
+- The workflow is manually triggered
+
+**Live Demo:** The example application will be available at: https://uug-ai.github.io/checkitout/
+
+### Manual Deployment
+
+You can also manually trigger the deployment by going to the Actions tab in the GitHub repository and running the "Deploy Example to GitHub Pages" workflow.
+
+### Local Preview
+
+To preview the production build locally:
+
+```bash
+cd example
+npm run build
+npm run preview
+```
