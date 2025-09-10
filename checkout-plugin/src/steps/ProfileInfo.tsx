@@ -3,15 +3,30 @@ import { StepComponentProps } from '../types'
 
 export const ProfileInfoStep: React.FC<StepComponentProps> = ({ controller }) => {
   return (
-    <div>
-      <h4 style={{ marginTop: 0 }}>ProfileInfoStep</h4>
-      <p>Please choose how you want to continue.</p>
-      <div style={{ display: 'flex', gap: '.5rem' }}>
-        <button onClick={() => controller.go('profileSkills')}>Next</button>
+    <>
+      <h4 className="checkout-modal__body__header">
+        Jouw profiel
+      </h4>
+      <div className="checkout-modal__body__content">
+        <p>
+          We hebben nog wat bijkomende informatie nodig over jou
+        </p>
+        <textarea
+          className="checkout-modal__textarea"
+          placeholder="Vertel wat meer over jezelf..."
+          rows={5}
+          wrap="soft"
+        />
       </div>
-      <div style={{ marginTop: '1rem' }}>
-        <button onClick={() => controller.close()}>Close</button>
+      <hr className="checkout-modal__divider" />
+         <div className="checkout-modal__body__actions">
+        <button
+          className="checkout-modal__button-primary checkout-modal__actions-center"
+          onClick={() => controller.go('profileSkills')}
+        >
+          Volgende
+        </button>
       </div>
-    </div>
+    </>
   )
 }
