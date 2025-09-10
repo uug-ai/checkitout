@@ -1,4 +1,4 @@
-import './Shop.css'
+import "./Shop.css"
 
 interface Ticket {
   id: number
@@ -110,10 +110,6 @@ const Shop = () => {
     alert(`Redirecting to payment for ${ticketName} - €${price}`)
   }
 
-  const handleFreeTicket = (ticketName: string) => {
-    alert(`Congratulations! You've entered the giveaway for ${ticketName}!`)
-  }
-
   return (
     <div className="shop">
       <div className="shop-hero">
@@ -181,12 +177,9 @@ const Shop = () => {
                   >
                     {ticket.soldOut ? 'SOLD OUT' : `BUY NOW - €${ticket.price}`}
                   </button>
-                  
-                  <button
-                    className="btn btn-free"
-                    onClick={() => handleFreeTicket(ticket.name)}
-                  >
-                    🎁 GET FREE TICKET
+
+                  <button type="button" className="btn checkout-plugin">
+                    Click me
                   </button>
                 </div>
               </div>
