@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standalone Checkout Plugin Test</title>
+    <link rel="stylesheet" href="dist/checkout-plugin.css">
+</head>
+<body>
+    <h1>Standalone Checkout Plugin Test</h1>
+    <div id="checkout-container"></div>
+
+    <script src="dist/checkout-plugin.umd.cjs"></script>
+    <script>
+        // Test that the plugin loads without errors
+        console.log('CheckoutPlugin loaded:', typeof CheckoutPlugin);
+        console.log('CheckoutPlugin object:', CheckoutPlugin);
+        
+        // Test that no process errors occur
+        if (typeof process !== 'undefined') {
+            console.warn('process global is defined - this should not happen in browser');
+        } else {
+            console.log('✓ No process global found - good for browser compatibility');
+        }
+    </script>
+</body>
+</html>

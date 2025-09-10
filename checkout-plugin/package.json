@@ -2,8 +2,7 @@
   "name": "checkout-plugin",
   "version": "1.0.1",
   "type": "module",
-  "main": "dist/checkout-plugin.umd.js",
-  "module": "dist/checkout-plugin.es.js",
+  "main": "dist/checkout-plugin.umd.cjs",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
