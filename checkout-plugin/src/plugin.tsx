@@ -29,15 +29,30 @@ declare global {
   }
 }
 
-export function initPlugin(triggerClass: string = 'checkout-plugin') {
-  if (window.__checkoutPluginInitialized) return
-  window.__checkoutPluginInitialized = true
+function onDomReady(cb: () => void) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cb, { once: true });
+  } else {
+    cb();
+  }
+}
 
-  let container = document.getElementById('__checkout-plugin-root')
+export function initPlugin(triggerClass: string = 'checkout-plugin') {
+  if (window.__checkoutPluginInitialized) return;
+  if (typeof document === 'undefined') return; // SSR safety
+
+  if (!document.body) {
+    onDomReady(() => initPlugin(triggerClass));
+    return;
+  }
+
+  window.__checkoutPluginInitialized = true;
+
+  let container = document.getElementById('__checkout-plugin-root');
   if (!container) {
-    container = document.createElement('div')
-    container.id = '__checkout-plugin-root'
-    document.body.appendChild(container)
+    container = document.createElement('div');
+    container.id = '__checkout-plugin-root';
+    document.body.appendChild(container);
   }
 
   const steps: Record<string, StepDefinition> = {
