@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { WelcomeStep } from './steps/Welcome'
 
 export interface ModalProps {
   open: boolean
@@ -11,11 +12,8 @@ export interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Modal', children }) => {
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
-    console.log('modal open prop', open)
     return () => document.removeEventListener('keydown', onKey)
   }, [open, onClose])
 
@@ -24,27 +22,22 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
   const portalTarget = document.getElementById('__checkout-plugin-root') || document.body
 
   return createPortal(
-    <div className="plugin-modal__backdrop" role="presentation" onClick={onClose}>
+    <div className="checkout-modal__backdrop" role="presentation" onClick={onClose}>
       <div
-        className="plugin-modal__dialog"
+        className="checkout-modal__dialog"
         role="dialog"
         aria-modal="true"
         aria-label={title}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="plugin-modal__header">
-          <h3 style={{ margin: 0, fontSize: '1.1rem' }}>{title}</h3>
-          <button
-            className="plugin-modal__close"
-            aria-label="Close"
-            onClick={onClose}
-            style={{ cursor: 'pointer' }}
-          >
-            ×
-          </button>
+        <div className="checkout-modal__header">
+          <button className="checkout-modal__close" aria-label="Close" onClick={onClose}>×</button>
         </div>
-        <div className="plugin-modal__body">
+        <div className="checkout-modal__body">
           {children}
+        </div>
+        <div className="checkout-modal__footer">
+          Muntuit
         </div>
       </div>
     </div>,

@@ -9,78 +9,107 @@ if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).$RefreshReg$ = (window as any).$RefreshReg$ || (() => { /* noop */ });
 }
-
-import React, { useState, useEffect } from "react";
-import { createRoot } from "react-dom/client";
-import { Modal } from "./Modal";
-import "./index.css";
+import React, { useEffect, useState } from 'react'
+import { createRoot } from 'react-dom/client'
+import { Modal } from './Modal'
+import './index.css'
+import { StepDefinition, StepsController } from './types'
+import { WelcomeStep } from './steps/Welcome'
+import { LoginStep } from './steps/Login'
+import { RegisterStep } from './steps/Register'
+import { ProfileInfoStep } from './steps/ProfileInfo'
+import { ProfileSkillsStep } from './steps/ProfileSkills'
+import { TasksOverviewStep } from './steps/TasksOverview'
+import { TaskDetailsStep } from './steps/TaskDetails'
+import { SummaryStep } from './steps/Summary'
 
 declare global {
   interface Window {
-    __checkoutPluginInitialized?: boolean;
-    __checkoutPluginRoot?: ReturnType<typeof createRoot>;
-    __checkoutPluginContainer?: HTMLDivElement;
+    __checkoutPluginInitialized?: boolean
   }
 }
 
-function onDomReady(cb: () => void) {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", cb, { once: true });
-  } else {
-    cb();
-  }
-}
+export function initPlugin(triggerClass: string = 'checkout-plugin') {
+  if (window.__checkoutPluginInitialized) return
+  window.__checkoutPluginInitialized = true
 
-export function initPlugin(targetClass: string = "checkout-plugin") {
-  if (window.__checkoutPluginInitialized) return;
-
-  // If body not yet available, wait and retry once DOM is ready
-  if (!document.body) {
-    onDomReady(() => initPlugin(targetClass));
-    return;
+  let container = document.getElementById('__checkout-plugin-root')
+  if (!container) {
+    container = document.createElement('div')
+    container.id = '__checkout-plugin-root'
+    document.body.appendChild(container)
   }
 
-  window.__checkoutPluginInitialized = true;
+  const steps: Record<string, StepDefinition> = {
+    welcome: { id: 'welcome', title: 'Welcome', component: WelcomeStep },
+    login: { id: 'login', title: 'Login', component: LoginStep },
+    register: { id: 'register', title: 'Register', component: RegisterStep },
+    profileInfo: { id: 'profileInfo', title: 'Profile info', component: ProfileInfoStep},
+    profileSkills: { id: 'profileSkills', title: 'Profile skills', component: ProfileSkillsStep},
+    tasksOverview: { id: 'tasksOverview', title: 'Tasks overview', component: TasksOverviewStep},
+    taskDetails: { id: 'taskDetails', title: 'Task details', component: TaskDetailsStep},
+    summary: { id: 'summary', title: 'Summary', component: SummaryStep},
+  }
 
-  if (document.getElementById("__checkout-plugin-root")) return;
+  const Wrapper: React.FC = () => {
+    const [open, setOpen] = useState(false)
+    const [current, setCurrent] = useState('welcome')
+    const [history, setHistory] = useState<string[]>([])
+    const [data, setData] = useState<Record<string, unknown>>({})
 
-  const container = document.createElement("div");
-  container.id = "__checkout-plugin-root";
-  document.body.appendChild(container);
-  const root = createRoot(container);
-  window.__checkoutPluginRoot = root;
-  window.__checkoutPluginContainer = container;
-
-  const ModalWrapper: React.FC = () => {
-    const [open, setOpen] = useState(false);
-
-    // Single delegated listener: catches current and future elements
     useEffect(() => {
-      const handleClick = (e: MouseEvent) => {
-        const el = e.target as HTMLElement | null;
-        if (el && el.closest(`.${targetClass}`)) {
-          setOpen(true);
+      const onClick = (e: MouseEvent) => {
+        const el = e.target as HTMLElement | null
+        if (el?.closest('.' + triggerClass)) {
+          setCurrent('welcome')
+            setHistory([])
+          setOpen(true)
         }
-      };
-      document.addEventListener("click", handleClick);
-      return () => document.removeEventListener("click", handleClick);
-    }, [targetClass]);
+      }
+      document.addEventListener('click', onClick)
+      return () => document.removeEventListener('click', onClick)
+    }, [])
 
+    const go = (id: string) => {
+      if (!steps[id]) return
+      setHistory(h => [...h, current])
+      setCurrent(id)
+    }
+
+    const back = () => {
+      setHistory(h => {
+        if (!h.length) return h
+        const clone = [...h]
+        const prev = clone.pop()!
+        setCurrent(prev)
+        return clone
+      })
+    }
+
+    const controller: StepsController = {
+      current,
+      history,
+      go,
+      back,
+      close: () => setOpen(false),
+      setData: (partial) => setData(d => ({ ...d, ...partial })),
+      data
+    }
+
+    const Active = steps[current].component
     return (
-      <Modal
-        open={open}
-        onClose={() => setOpen(false)}
-        title="Checkout Plugin"
-      />
-    );
-  };
+      <Modal open={open} onClose={() => setOpen(false)} title={steps[current].title}>
+        <Active controller={controller} data={data} />
+      </Modal>
+    )
+  }
 
-  root.render(<ModalWrapper />);
+  createRoot(container).render(<Wrapper />)
 }
 
-// Auto-init safely (outside React, unaffected by StrictMode)
-if (typeof window !== "undefined") {
-  onDomReady(() => initPlugin("checkout-plugin"));
+if (typeof window !== 'undefined') {
+  // Auto-init default trigger
+  initPlugin('checkout-plugin')
 }
 
-export default { initPlugin };
+export default { initPlugin }

@@ -1,7 +1,7 @@
 #__checkout-plugin-root {
     --modal-backdrop-bg: rgba(0 0 0 / 0.45);
     --modal-z-index: 999;
-    --modal-bg: #8b1b1bff;
+    --modal-bg: #ffffffff;
     --modal-color: #222;
     --modal-max-width: 520px;
     --modal-radius: 8px;
@@ -14,7 +14,7 @@
     --modal-body-font-size: 0.95rem;
     --modal-body-line-height: 1.4;
 
-  .plugin-modal__backdrop {
+  .checkout-modal__backdrop {
     position: fixed;
     inset: 0;
     background: rgba(0 0 0 / 0.45);
@@ -23,7 +23,7 @@
     justify-content: center;
     z-index: 999;
   }
-  .plugin-modal__dialog {
+  .checkout-modal__dialog {
     background: var(--modal-bg, #fff);
     color: var(--modal-color, #222);
     max-width: var(--modal-max-width, 520px);
@@ -33,22 +33,29 @@
     box-shadow: var(--modal-shadow, 0 4px 24px -4px rgba(0,0,0,0.35));
     font-family: system-ui, sans-serif;
   }
-  .plugin-modal__header {
+  .checkout-modal__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: .5rem;
     margin-bottom: .75rem;
   }
-  .plugin-modal__close {
+  .checkout-modal__close {
     border: none;
     background: transparent;
     font-size: 1.25rem;
     line-height: 1;
     cursor: pointer;
   }
-  .plugin-modal__body {
+  .checkout-modal__body {
     font-size: 0.95rem;
     line-height: 1.4;
+  }
+  .checkout-modal__footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+    font-size: 0.9rem;
   }
 }

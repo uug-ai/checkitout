@@ -8,7 +8,7 @@ export default defineConfig({
       entry: "src/plugin.tsx",
       name: "CheckoutPlugin",
       fileName: "checkout-plugin",
-      formats: ["umd"],
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       external: [],
