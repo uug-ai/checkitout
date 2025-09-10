@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { WelcomeStep } from './steps/Welcome'
+import logoUrl from './assets/muntuit-logo.svg'
+import closeUrl from './assets/close.svg'
 
 export interface ModalProps {
   open: boolean
@@ -31,13 +32,34 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title = 'Plugin Mod
         onClick={(e) => e.stopPropagation()}
       >
         <div className="checkout-modal__header">
-          <button className="checkout-modal__close" aria-label="Close" onClick={onClose}>×</button>
+          <button className="checkout-modal__close" aria-label="Close" onClick={onClose}>
+             <img
+              src={closeUrl}
+              alt="Close button"
+              style={{ height: '1em', marginLeft: '0.5em', display: 'block' }}
+            />
+          </button>
         </div>
         <div className="checkout-modal__body">
           {children}
         </div>
         <div className="checkout-modal__footer">
-          Muntuit
+          <span className="checkout-modal__footer__text">
+            Powered by Muntuit
+          </span>
+          <a
+            className="checkout-modal__footer__link"
+            href="https://muntuit.be"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center' }}
+          >
+            <img
+              src={logoUrl}
+              alt="Muntuit logo"
+              style={{ height: '1.2em', marginLeft: '0.5em', display: 'block' }}
+            />
+          </a>
         </div>
       </div>
     </div>,
