@@ -21,7 +21,7 @@ import { ProfileInfoStep } from './steps/ProfileInfo'
 import { ProfileSkillsStep } from './steps/ProfileSkills'
 import { TasksOverviewStep } from './steps/TasksOverview'
 import { TaskDetailsStep } from './steps/TaskDetails'
-import { SummaryStep } from './steps/Summary'
+import { ConfirmTaskStep } from './steps/ConfirmTask'
 
 declare global {
   interface Window {
@@ -63,7 +63,7 @@ export function initPlugin(triggerClass: string = 'checkout-plugin') {
     profileSkills: { id: 'profileSkills', title: 'Profile skills', component: ProfileSkillsStep},
     tasksOverview: { id: 'tasksOverview', title: 'Tasks overview', component: TasksOverviewStep},
     taskDetails: { id: 'taskDetails', title: 'Task details', component: TaskDetailsStep},
-    summary: { id: 'summary', title: 'Summary', component: SummaryStep},
+    confirmTask: { id: 'confirmTask', title: 'Confirm Task', component: ConfirmTaskStep},
   }
 
   const Wrapper: React.FC = () => {

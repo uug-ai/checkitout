@@ -10,7 +10,7 @@ export const LoginStep: React.FC<StepComponentProps> = ({ controller }) => {
   const submit = () => {
     // fake auth
     controller.setData({ userAuthenticated: true, email })
-    controller.go('profileInfo')
+    controller.go('profileSkills')
   }
 
   return (

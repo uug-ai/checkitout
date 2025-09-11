@@ -20,3 +20,14 @@ export interface StepDefinition {
   title: string
   component: React.FC<StepComponentProps>
 }
+
+export interface Task {
+  name: string,
+  event: string,
+  date: string,
+  time?: string,
+  location?: string,
+  description?: string,
+  image?: string,
+  [key: string]: unknown
+}

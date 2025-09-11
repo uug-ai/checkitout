@@ -14,7 +14,7 @@ export const ProfileSkillsStep: React.FC<StepComponentProps> = ({ controller }) 
 
   const next = () => {
     controller.setData({ skills: selected })
-    controller.go('taskOverview')
+    controller.go('tasksOverview')
   }
 
   return (
