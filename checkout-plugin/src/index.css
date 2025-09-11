@@ -220,7 +220,7 @@
 .checkout-modal--input {
   min-width: 3rem;
   font-size: 1rem;
-  height: 2rem;
+  height: 3rem;
   border: 1px solid var(--modal-border-color);
   padding: var(--modal-field-padding);
   color: var(--modal-color);
