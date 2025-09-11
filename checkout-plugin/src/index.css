@@ -36,7 +36,7 @@
   .checkout-modal__dialog {
     background: var(--modal-bg, #fff);
     color: var(--modal-color, #222);
-    max-width: var(--modal-width, 520px);
+    width: var(--modal-width, 520px);
     max-height: 90vh;
     overflow-y: auto;
     border-radius: var(--modal-radius-big);
