@@ -13,7 +13,7 @@ export const RegisterStep: React.FC<StepComponentProps> = ({ controller }) => {
 
   const submit = () => {
     controller.setData({ userRegistered: true, email, name })
-    controller.go('login')
+    controller.go('profileInfo')
   }
 
   return (
